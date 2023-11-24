@@ -12,6 +12,6 @@ demo=gr.TabbedInterface([create_Chatbot_tab(),
                             create_Recognition_Skin_Disease_tab()],
                         ["Health consulting assistant","Generate images of the disease","X-ray diagnosis","skin diseases recognition"],
                         title="Healthcare AI Application",
-                        theme="abidlabs/dracula_revamped")
+                        theme="HaleyCH/HaleyCH_Theme")#abidlabs/dracula_revamped")
 if __name__ == "__main__":
     demo.queue().launch(share=True)
