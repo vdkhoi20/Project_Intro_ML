@@ -1,7 +1,6 @@
 import gradio as gr
 from diffusers import DiffusionPipeline
 import torch
-from torchvision.transforms import ToPILImage
 from deep_translator import GoogleTranslator
 
 # Load the pretrained model
@@ -15,14 +14,14 @@ def create_Generate_Image_Disease_tab():
             prompt_en = GoogleTranslator(source='vietnamese', target='english').translate(prompt)
 
             # Generate images from the model
-            images = pipe(prompt=prompt_en).images[0]
+            images = pipe(prompt=prompt_en, num_inference_steps=25).images[0]
 
             return images
 
-        gr.Markdown("Start typing below and then click **Run** to see the output.")
+        gr.Markdown("Vui lòng điền vào ô trống và nhấn **Chạy** để hiển thị ra kết quả.")
         with gr.Row():
-            inp = gr.Textbox(placeholder="Description")
+            inp = gr.Textbox(placeholder="Loại bệnh bạn muốn hiển thị")
             out = gr.Image()
-        btn = gr.Button("Run")
+        btn = gr.Button("Chạy")
         btn.click(fn=generate, inputs=inp, outputs=out)
     return Generate_Image_Disease_Tab
