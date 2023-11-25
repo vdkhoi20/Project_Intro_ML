@@ -5,3 +5,4 @@ accelerate
 diffusers
 deep_translator
 requests
+ultralyticsplus
