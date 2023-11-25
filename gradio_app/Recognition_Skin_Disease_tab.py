@@ -24,7 +24,6 @@ def convert_json_to_human_readable(response):
 
       # Create a human-readable string
       result_str = f'''
-      Kết Quả Phân Tích:
       - Bộ phận cơ thể : {body_part}
 
       Phần Trăm Nguy Cơ Mắc Các Bệnh Như Sau:
