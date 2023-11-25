@@ -51,11 +51,11 @@ def update(input_img):
     return convert_json_to_human_readable(response)
 def create_Recognition_Skin_Disease_tab():
     with gr.Blocks() as Recognition_Skin_Disease_Tab:
-        gr.Markdown("Tải Ảnh Lên và Click vào **Run** để xem chẩn đoán về bệnh ngoài da.")
+        gr.Markdown("Tải Ảnh Lên và Click vào **Chạy** để xem chẩn đoán về bệnh ngoài da.")
         with gr.Row():
             inp_image = gr.Image(label="Hình Ảnh Bệnh Ngoài Da", value=os.path.join(os.path.dirname(__file__), "image_skin_disease.jpg"), interactive=True, height=512, width=512)
         with gr.Row(): 
             out = gr.Textbox(label = "Kết Quả Chẩn Đoản")
-        btn = gr.Button("Run")
+        btn = gr.Button("Chạy")
         btn.click(fn=update, inputs=inp_image, outputs=out)
     return Recognition_Skin_Disease_Tab
