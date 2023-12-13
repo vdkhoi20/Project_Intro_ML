@@ -6,3 +6,4 @@ diffusers
 deep_translator
 requests
 ultralyticsplus
+openai
