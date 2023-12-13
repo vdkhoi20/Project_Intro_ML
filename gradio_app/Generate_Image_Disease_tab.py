@@ -20,8 +20,9 @@ def create_Generate_Image_Disease_tab():
 
         gr.Markdown("Vui lòng điền vào ô trống và nhấn **Chạy** để hiển thị ra kết quả.")
         with gr.Row():
-            inp = gr.Textbox(placeholder="Loại bệnh bạn muốn hiển thị")
             out = gr.Image()
+        with gr.Row():  
+            inp = gr.Textbox(placeholder="Loại bệnh bạn muốn hiển thị")
         btn = gr.Button("Chạy")
         btn.click(fn=generate, inputs=inp, outputs=out)
     return Generate_Image_Disease_Tab
