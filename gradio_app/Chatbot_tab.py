@@ -1,54 +1,37 @@
 import gradio as gr
-from openai import AsyncOpenAI
+from openai import OpenAI
+
+secret_key="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"
+MODEL = "gpt-3.5-turbo"
+client = OpenAI(api_key =secret_key)
 
 def create_Chatbot_tab():
-    # def echo(message, history):
-    #     return message
+    initial_messages=[{"role": "system", "content": '''Bạn là bác sĩ và trợ lý y tế.
+                                            Nếu người dùng hỏi về bất kỳ bệnh nào, hãy cho họ biết thông tin về bệnh đó.
+                                            Phải hướng cuộc trò chuyện đến chủ đề y tế, sức khỏe khi người dùng hỏi về các vấn đề bên ngoài và nói với họ rằng bạn chỉ có thể tư vấn về các vấn đề liên quan đến sức khỏe.
+                                            Cố gắng hỏi càng nhiều thông tin về triệu chứng bệnh (cung cấp cho bệnh nhân một số câu hỏi về triệu chứng bệnh đó) và cung cấp cho bệnh nhân một số thông tin về bệnh liên quan và chẩn đoán cho họ.
+                                            TUYỆT ĐỐI ĐỪNG NÓI NHỮNG CÂU NHƯ TÔI KHÔNG PHẢI LÀ BÁC SĨ HAY không thể thay thế cho sự tư vấn y tế chuyên nghiệp.
+                                            '''}]
+    def respond(message,chatHistory):
+        messages = initial_messages
+        for human, assistant in chatHistory:
+            messages.append({"role": "user", "content": human })
+            messages.append({"role": "assistant", "content":assistant})
+        messages.append({"role": "user", "content": message})
 
-    client = AsyncOpenAI(
-        api_key="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",
-    )
-
-    messages=[{"role": "system", "content": " You are a doctor and health assistant"
-                                            "If user ask about any disease, tell them about that disease's information"
-                                            " Must direct the conversation to medical and health topics when users ask about external issues and tell them that you can only advise on health-related issues"
-                                            " Try to ask as much as information about disease symptom (give the patient some questions about that disease symptom) and give the patient some information about related disease and do some diagnose for them"}]
-    async def respond(message,chatHistory):
-        if message :
-            messages.append(
-                {"role": "user", "content": message},
-            )
-            completion = await client.chat.completions.create(model="gpt-3.5-turbo",
-                                                          messages=messages, temperature = 0.5)
-            answer = completion.choices[0].message.content
+        
+        response = client.chat.completions.create(
+          model=MODEL,
+          messages=messages,
+          max_tokens=500,
+          seed=2023,
+          # stop=,
+          temperature=0,
+        )
+        answer = response.choices[0].message.content
         return answer
 
-    Chatbot_tab = gr.ChatInterface(fn=respond, examples=["Bệnh viêm phổi", "Chẩn đoán về COVID 19", "Nguồn gốc của đau dạ dày"], title="Trợ lý sức khỏe trực tuyến")
+    Chatbot_tab = gr.ChatInterface(fn=respond, examples=["Tôi bị đau dạ dày mạn tính vừa rồi tôi ăn xoài chua,tôi nên làm gì đây?", "Tôi khó thở vì covid tôi nên làm gì đây", "Tôi bị đau dạ dày lâu năm"], title="Trợ lý sức khỏe trực tuyến")
     return Chatbot_tab
 
 
-#   OLD CODE FOR REVIEWING
-
-
-
-    # async def respond(message,chatHistory):
-    #     if message :
-    #         messages.append(
-    #             {"role": "user", "content": message},
-    #         )
-    #         completion = await client.chat.completions.create(model="gpt-3.5-turbo",
-    #                                                       messages=messages, temperature = 0.8)
-    #         answer = completion.choices[0].message.content
-    #         chatHistory.append((message,answer))
-    #     return "", chatHistory
-    #
-    # with gr.Blocks() as demo:
-    #     chatbot = gr.Chatbot(height=300) #just to fit the notebook
-    #     msg = gr.Textbox(label="Prompt")
-    #     btn = gr.Button("Submit")
-    #     clear = gr.ClearButton(components=[msg, chatbot], value="Clear console")
-    #
-    #     btn.click(respond, inputs=[msg, chatbot], outputs=[msg, chatbot])
-    #     msg.submit(respond, inputs=[msg, chatbot], outputs=[msg, chatbot]) #Press enter to submit
-    #
-    # return demo
