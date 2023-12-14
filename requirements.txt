@@ -5,5 +5,6 @@ accelerate
 diffusers
 deep_translator
 requests
-ultralyticsplus
 openai
+ultralyticsplus==0.0.24 
+ultralytics==8.0.23
