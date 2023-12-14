@@ -2,11 +2,12 @@ import gradio as gr
 from PIL import Image
 from ultralyticsplus import YOLO, postprocess_classify_output
 import os
-model = YOLO('yolov8n.pt')
+model = YOLO('keremberke/yolov8m-chest-xray-classification')
 model.overrides['conf'] = 0.25
 
 def update_X_Quang(image):
     results = model.predict(image)
+    print(results)
     processed_result = postprocess_classify_output(model, result=results[0])
     normal = processed_result['NORMAL']
     pneumonia = processed_result['PNEUMONIA']
