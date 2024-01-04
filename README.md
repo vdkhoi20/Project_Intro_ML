@@ -18,20 +18,26 @@ Với sự phát triển mạnh mẽ của khoa học ngày nay, với những c
 ### Tư vấn sức khỏe
 
  Chức năng tư vấn sức khỏe được hình thành bằng cách gọi API mô hình GPT-3.5-turbo. Mô hình này sử dụng kiến trúc Transformer để hiểu ngữ cảnh của câu và tạo ra câu trả lời phù hợp. Mô hình này đã được chứng minh là hiệu quả trong việc tạo ra các câu trả lời tự nhiên và chính xác. Đáng chú ý, GPT-3.5-turbo là một phiên bản của mô hình ngôn ngữ GPT-3 được tối ưu hóa về tốc độ. Mô hình này có thể tạo văn bản nhanh hơn tới 10 lần so với mẫu GPT-3.0 ban đầu. Điều này đạt được bằng cách sử dụng một số kỹ thuật, bao gồm: mô hình nhỏ hơn với ít tham số hơn, kiến trúc hiệu quả hơn, và kỹ thuật đào tạo hiệu quả hơn. Với những đặc tính nêu trên, mô hình sẽ mang lại độ chính xác cao trong việc tư vấn sức khỏe cho người dùng với tốc độ trả lời nhanh. Để có thể sử dụng chức năng, người dùng chỉ cần nhập vào những vấn đề thắc mắc về sức khỏe, ứng dụng sẽ hình thành nên câu trả lời tư vấn cho người dùng dựa trên những thông tin hiện có.
+ 
  ![](Picture1.jpg)
 
 ### Sinh ra ảnh triệu chứng bệnh (ngoài da)
  ![](Picture2.jpg)
+ 
 Hoạt động dựa trên mô hình SD-XL 1.0 huấn luyện sẵn được cung cấp sử dụng trên Hugging Face và được phát triển bởi Stability AI. Mô hình này sử dụng một kiến trúc UNet lớn hơn và một bối cảnh cross-attention lớn hơn nhờ sử dụng một bộ mã hóa văn bản thứ hai. SDXL 1.0 tạo ra hình ảnh chất lượng cao trong hầu hết các phong cách nghệ thuật và là mô hình mở tốt nhất cho việc tạo hình ảnh thực. Hình ảnh rõ ràng có thể được tạo ra mà không cần có bất kỳ ‘cảm giác’ nào được truyền đạt bởi mô hình, đảm bảo tự do tuyệt đối về phong cách. Mô hình này đã được chứng minh là hiệu quả trong việc tạo ra các hình ảnh chất lượng cao từ các dấu hiệu văn bản. Chức năng chính của mô hình này là tạo ra hình ảnh minh họa theo từ ngữ diễn tả của người dùng. Lý do cho mô hình này được chọn là bởi vì độ chính xác cao đã được kiểm nghiệm và so sánh với các mô hình tương tự trước đó. Tuy vẫn chưa đạt được độ chính xác tối ưu nhất nhưng mô hình vẫn mang lại chức năng cần thiết cho người dùng, giúp người dùng hình dung rõ nét hơn về triệu chứng căn bệnh ngoài da mà bản thân đang gặp phải. Để sử dụng chức năng, người dùng sẽ nhập vào miêu tả về căn bệnh ngoài da, hệ thống sẽ sinh ra hình ảnh tương ứng với căn bệnh đó dựa trên tập dữ liệu được huấn luyện sẵn trước đó.
+
  ![](Picture3.jpg)
 
 ### Nhận biết ảnh triệu chứng bệnh (ngoài da)
 
 Hoạt động bằng cách gọi Detect Skin Disease API được cung cấp từ AILabTools. Detect Skin Disease API nhận hình ảnh tự nhiên của da và dự đoán phân loại các bệnh da1. API này có thể phát hiện 24 bệnh da phổ biến. API này hoạt động dựa trên các thuật toán học máy để phân loại các hình ảnh da và đưa ra dự đoán về loại bệnh da. API này đã được chứng minh là chính xác và hiệu quả. Để sử dụng được chức năng, người dùng cần cung cấp hình ảnh tình trạng da hiện tại dưới định dạng JPG, PNG, kích thước không vượt quá 20MB và độ phân giải phải thấp hơn 1280x1280px. Sau khi đã cung cấp hình ảnh, hệ thống sẽ đưa ra kết quả dự đoán bộ phận cơ thể trong ảnh và xác suất phần trăm nguy cơ mắc bệnh.
 
+ ![](Picture5.jpg)
+ 
 ### d. Nhận biết ảnh X-Quang phổi
 
 Hoạt động dựa trên mô hình YOLOv8 Chest Xray Classification được phát triển bởi Mô hình YOLOv8 Chest Xray Classification được phát triển bởi keremberke và được đăng tải trên Hugging Face. YOLOv8 là một mô hình phát hiện đối tượng nhanh, chính xác và dễ sử dụng, được phát triển bởi Ultralytics. YOLOv8 xây dựng trên thành công của các phiên bản YOLO trước đó và giới thiệu các tính năng và cải tiến mới để tăng cường hiệu suất và linh hoạt. Mô hình YOLOv8 được sử dụng trong hệ thống là một mô hình được tinh chỉnh (finetuned) cho nhiệm vụ phân loại ảnh X-quang ngực. Mô hình này có thể phân biệt được hai nhãn: NORMAL (bình thường) và PNEUMONIA (viêm phổi). Mô hình này có độ chính xác top-1 là 0.955 và top-5 là 1.000, cao hơn các mô hình YOLOv8 khác như YOLOv8n và YOLOv8s. Mô hình này cũng có thể phát hiện các đối tượng khác với độ chính xác cao. Cách thức sử dụng chức năng cũng rất đơn giản, chỉ cần người dung cung cấp hình ảnh X-Quang ngực, hệ thống sẽ đưa ra kết quả dự đoán xác suất phần trăm bị ung thư hoặc không dựa trên hình ảnh được cung cấp.
+
  ![](Picture4.jpg)
 
 ## III. Các kiến trúc và tính năng nổi bật của các pretrained model được sử dụng
@@ -40,6 +46,7 @@ Hoạt động dựa trên mô hình YOLOv8 Chest Xray Classification được p
 
 - **Kiến trúc:** GPT (Transformer)
 - **Tính năng:** ChatGPT xây dựng trên kiến trúc GPT, một mô hình Transformer pre-trained. Transformer là một kiến trúc mạng nơ-ron chủ yếu dựa trên cơ chế tự chú ý (self-attention), giúp mô hình hiểu được các mối quan hệ không gian và ngữ nghĩa trong dữ liệu văn bản. Mô hình GPT được huấn luyện trước trên một lượng lớn dữ liệu văn bản không gán nhãn từ Internet.
+- 
  ![](attention.png)
  ![](transformer.png)
 
@@ -49,6 +56,7 @@ Hoạt động dựa trên mô hình YOLOv8 Chest Xray Classification được p
 
 - **Kiến trúc:** CNN (Convolutional Neural Network)
 - **Tính năng:** YOLO sử dụng một mạng nơ-ron dựa trên kiến trúc CNN (Convolutional Neural Network).Ảnh được chia thành lưới ô và mỗi ô dự đoán nhiều bounding boxes cùng lúc. Mỗi bounding box chứa thông tin về vị trí và xác suất của các lớp đối tượng. YOLO chạy nhanh vì chỉ yêu cầu một lần chạy qua toàn bộ ảnh để thực hiện các dự đoán.
+- 
  ![](yoloar.png)
  ![](yoloex.png)
 
@@ -56,8 +64,10 @@ Hoạt động dựa trên mô hình YOLOv8 Chest Xray Classification được p
 
 - **Kiến trúc:** Denoising Diffusion Probabilistic Models
 - **Tính năng:** Là một Denoising Diffusion Probabilistic Models dựa vào cơ chế cross attention để conditioning nhiều task vụ như là text-image, image->image,..
+
  ![](denoising process.png)
  ![](ldm.png)
+
 ## IV. Khó khăn gặp phải và cách giải quyết
 
 ### a. Khó khăn
