@@ -65,7 +65,7 @@ Hoạt động dựa trên mô hình YOLOv8 Chest Xray Classification được p
 - **Kiến trúc:** Denoising Diffusion Probabilistic Models
 - **Tính năng:** Là một Denoising Diffusion Probabilistic Models dựa vào cơ chế cross attention để conditioning nhiều task vụ như là text-image, image->image,..
 
- ![](denoising process.png)
+ ![](denoising_process.png)
  ![](ldm.png)
 
 ## IV. Khó khăn gặp phải và cách giải quyết
