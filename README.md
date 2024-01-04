@@ -18,7 +18,7 @@ Với sự phát triển mạnh mẽ của khoa học ngày nay, với những c
 ### Tư vấn sức khỏe
 
  Chức năng tư vấn sức khỏe được hình thành bằng cách gọi API mô hình GPT-3.5-turbo. Mô hình này sử dụng kiến trúc Transformer để hiểu ngữ cảnh của câu và tạo ra câu trả lời phù hợp. Mô hình này đã được chứng minh là hiệu quả trong việc tạo ra các câu trả lời tự nhiên và chính xác. Đáng chú ý, GPT-3.5-turbo là một phiên bản của mô hình ngôn ngữ GPT-3 được tối ưu hóa về tốc độ. Mô hình này có thể tạo văn bản nhanh hơn tới 10 lần so với mẫu GPT-3.0 ban đầu. Điều này đạt được bằng cách sử dụng một số kỹ thuật, bao gồm: mô hình nhỏ hơn với ít tham số hơn, kiến trúc hiệu quả hơn, và kỹ thuật đào tạo hiệu quả hơn. Với những đặc tính nêu trên, mô hình sẽ mang lại độ chính xác cao trong việc tư vấn sức khỏe cho người dùng với tốc độ trả lời nhanh. Để có thể sử dụng chức năng, người dùng chỉ cần nhập vào những vấn đề thắc mắc về sức khỏe, ứng dụng sẽ hình thành nên câu trả lời tư vấn cho người dùng dựa trên những thông tin hiện có.
- 
+ ![](Picture1.jpg)
 
 ### Sinh ra ảnh triệu chứng bệnh (ngoài da)
 
