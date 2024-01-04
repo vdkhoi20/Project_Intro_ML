@@ -6,8 +6,8 @@
 **Members:**
 - **ID 1:** 20127045 - Võ Đình Khôi (33%)
 - **ID 2:** 20127411 - Đỗ Đạt Thành (27%)
-- **ID 3:** 21127290 - Nguyễn Gia Hưng (23%)
-- **ID 4:** 21127005 - Lê Trọng Đức Anh (17%)
+- **ID 3:** 21127290 - Nguyễn Gia Hưng (17%)
+- **ID 4:** 21127005 - Lê Trọng Đức Anh (23%)
 
 ## I. Giới thiệu
 
