@@ -48,7 +48,7 @@ Hoạt động dựa trên mô hình YOLOv8 Chest Xray Classification được p
 - **Tính năng:** ChatGPT xây dựng trên kiến trúc GPT, một mô hình Transformer pre-trained. Transformer là một kiến trúc mạng nơ-ron chủ yếu dựa trên cơ chế tự chú ý (self-attention), giúp mô hình hiểu được các mối quan hệ không gian và ngữ nghĩa trong dữ liệu văn bản. Mô hình GPT được huấn luyện trước trên một lượng lớn dữ liệu văn bản không gán nhãn từ Internet.
 - 
  ![](attention.png)
- ![](transformer.png)
+ ![](transformer1.png)
 
 - The fine-tuning process leveraged both [supervised learning](https://en.wikipedia.org/wiki/Supervised_learning "Supervised learning") as well as [reinforcement learning](https://en.wikipedia.org/wiki/Reinforcement_learning "Reinforcement learning") in a process called [reinforcement learning from human feedback](https://en.wikipedia.org/wiki/Reinforcement_learning_from_human_feedback "Reinforcement learning from human feedback") (RLHF). These rankings were used to create "reward models" that were used to fine-tune the model further by using several iterations of [Proximal Policy Optimization](https://en.wikipedia.org/wiki/Proximal_Policy_Optimization "Proximal Policy Optimization") (PPO)
 
